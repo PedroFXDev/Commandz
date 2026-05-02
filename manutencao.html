@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manutenção de Sistemas | CommandZ</title>
+
+    <!-- Google Fonts: Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .maintenance-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .maintenance-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 50px rgba(79, 140, 255, 0.15));
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(79, 140, 255, 0.1)); }
+            50% { filter: drop-shadow(0 0 60px rgba(79, 140, 255, 0.3)); }
+        }
+
+        .status-badge {
+            background: rgba(79, 140, 255, 0.1);
+            color: var(--color-primary-accent);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 1px solid rgba(79, 140, 255, 0.2);
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-primary-accent);
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.3; }
+        }
+
+        .maintenance-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .maintenance-text {
+            color: var(--color-gray-500);
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 70%; /* Simulação de progresso */
+            background: var(--color-primary-accent);
+            box-shadow: 0 0 15px var(--color-primary-accent);
+            animation: progress-load 10s ease-in-out infinite;
+        }
+
+        @keyframes progress-load {
+            0% { width: 0%; }
+            50% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        .progress-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #52525B;
+        }
+
+        .contact-info {
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 2rem;
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body class="bg-dark-tech">
+    <div class="maintenance-container">
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            Sistemas em atualização
+        </div>
+
+        <img src="img/manutencao.png" alt="Manutenção CommandZ" class="maintenance-image">
+
+        <h1 class="maintenance-title fw-bold glitch-text" data-text="CALIBRANDO_CIRCUITOS">
+            CALIBRANDO_CIRCUITOS
+        </h1>
+
+        <p class="maintenance-text">
+            Estamos realizando ajustes técnicos para melhorar a sua experiência. 
+            Voltaremos a operar em plena capacidade em breve.
+        </p>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="progress-label mb-5">
+            OPTIMIZING_CORE_RESOURCES... <span id="percent">85</span>%
+        </div>
+
+        <div class="contact-info">
+            <p class="small text-muted font-mono mb-0">
+                Precisa de suporte urgente?<br>
+                <a href="mailto:suporte@comandz.com" class="text-white text-decoration-none hover-primary">suporte@comandz.com</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Simulação de contador de porcentagem
+        let percent = 85;
+        const el = document.getElementById('percent');
+        setInterval(() => {
+            if(percent < 99) {
+                percent += Math.random() > 0.7 ? 1 : 0;
+                el.innerText = percent;
+            }
+        }, 3000);
+
+        // Flicker de monitor
+        setInterval(() => {
+            if(Math.random() > 0.99) {
+                document.body.style.opacity = '0.95';
+                setTimeout(() => document.body.style.opacity = '1', 50);
+            }
+        }, 150);
+    </script>
+</body>
+
+</html>
