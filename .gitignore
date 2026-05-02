@@ -1,0 +1,13 @@
+# Pastas de referência / desenvolvimento
+Efects/
+BASED]/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+*.swo
