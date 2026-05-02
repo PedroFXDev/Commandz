@@ -94,7 +94,7 @@ Commanz/
 
 <div align="center">
 
-**Feito com `<code/>` por [CommandZ](https://pedrofxdev.github.io/Commanz/)**
+** [CommandZ](https://pedrofxdev.github.io/Commanz/)**
 
 `// © 2026 CommandZ. Todos os direitos reservados.`
 
