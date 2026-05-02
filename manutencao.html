@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manutenção de Sistemas | CommandZ</title>
+    <title>Sistemas em Calibração | CommandZ</title>
 
-    <!-- Google Fonts: Inter & Fira Code -->
+    <!-- Google Fonts: Outfit & Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,127 +18,232 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        .maintenance-hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: var(--color-bg);
-            position: relative;
+        body {
+            background-color: #050508;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(79, 140, 255, 0.03) 0%, transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 100% 100%, 80px 80px, 80px 80px;
+            font-family: 'Outfit', sans-serif;
             overflow: hidden;
+            height: 100vh;
+            margin: 0;
         }
 
-        .maintenance-hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            right: -10%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(79, 140, 255, 0.05) 0%, transparent 70%);
-            pointer-events: none;
+        .content-wrapper {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(79, 140, 255, 0.05);
+            border: 1px solid rgba(79, 140, 255, 0.15);
+            padding: 10px 22px;
+            border-radius: 100px;
+            color: var(--color-primary-accent);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 50px;
+        }
+
+        .status-pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--color-primary-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--color-primary-accent);
+            animation: status-blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes status-blink {
+            50% { opacity: 0.2; transform: scale(0.8); }
         }
 
         .mascot-display {
             position: relative;
-            animation: floating 5s ease-in-out infinite;
+            margin-bottom: 40px;
+            animation: mascot-float 6s ease-in-out infinite;
         }
 
-        @keyframes floating {
+        @keyframes mascot-float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
+            50% { transform: translateY(-25px) rotate(1deg); }
         }
 
-        .tech-status-box {
-            border-left: 2px solid var(--color-primary-accent);
-            padding-left: 20px;
-            margin: 30px 0;
+        .mascot-img {
+            max-width: 550px;
+            width: 100%;
+            filter: drop-shadow(0 0 40px rgba(79, 140, 255, 0.15));
         }
 
-        .progress-mini {
-            height: 2px;
-            background: rgba(255, 255, 255, 0.05);
-            width: 200px;
-            margin-top: 10px;
+        .title-main {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .subtitle {
+            color: #71717A;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+            font-family: var(--font-mono);
+        }
+
+        .progress-wrapper {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .progress-bar-container {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
             overflow: hidden;
+            position: relative;
         }
 
-        .progress-mini-fill {
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
             height: 100%;
+            width: 92%;
             background: var(--color-primary-accent);
-            width: 0%;
-            animation: fill-up 4s ease-in-out infinite;
+            box-shadow: 0 0 20px var(--color-primary-accent);
+            animation: loading-bar 10s ease-in-out infinite;
         }
 
-        @keyframes fill-up {
+        @keyframes loading-bar {
             0% { width: 0%; }
-            50% { width: 70%; }
             100% { width: 100%; }
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: #3F3F46;
+            letter-spacing: 0.1em;
+        }
+
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--color-primary-accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: particle-move linear infinite;
+        }
+
+        @keyframes particle-move {
+            to { transform: translateY(-100vh); }
+        }
+
+        .footer-contact {
+            position: absolute;
+            bottom: 40px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .footer-contact a {
+            color: #52525B;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: #fff;
         }
     </style>
 </head>
 
-<body class="bg-dark-tech">
-    <!-- Navbar (Simplified) -->
-    <nav class="navbar navbar-expand-lg fixed-top scrolled">
-        <div class="container">
-            <a class="navbar-brand fw-bold font-mono" href="#">&lt;CommandZ/&gt;<span class="text-primary-accent blink">_</span></a>
+<body>
+    <div class="particles" id="particle-container"></div>
+
+    <div class="content-wrapper">
+        <div class="status-pill">
+            <span class="status-pulse"></span>
+            SYSTEM_CALIBRATION_ACTIVE
         </div>
-    </nav>
 
-    <main class="maintenance-hero">
-        <div class="container position-relative z-1">
-            <div class="row align-items-center">
-                <!-- Text Content -->
-                <div class="col-lg-7">
-                    <div class="tech-badge mb-4 font-mono d-inline-block px-3 py-2 border rounded" style="background: rgba(39,39,42,0.5); border-color: rgba(255,255,255,0.05) !important;">
-                        <span style="color: #A1A1AA;">status:</span> <span class="text-white">UNDER_MAINTENANCE</span>;
-                    </div>
-                    
-                    <h1 class="hero-title fw-bold glitch-text" data-text="Estamos recalibrando nossos circuitos." style="font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -0.5px;">
-                        <span class="text-white">Estamos recalibrando</span><br>
-                        <span class="text-white">nossos </span><span style="color: #A1A1AA;">circuitos.</span>
-                    </h1>
-                    
-                    <div class="tech-status-box font-mono">
-                        <span style="color: #71717A; font-size: 0.9rem;">// Otimizando banco de dados...</span><br>
-                        <span style="color: #71717A; font-size: 0.9rem;">// Atualizando protocolos de segurança...</span>
-                        <div class="progress-mini"><div class="progress-mini-fill"></div></div>
-                    </div>
-                    
-                    <div class="d-flex flex-column flex-sm-row gap-3 mt-5">
-                        <a href="mailto:contato@comandz.com" class="btn btn-primary-custom btn-lg px-4 font-mono">
-                            contact_support()
-                        </a>
-                        <button onclick="window.location.reload()" class="btn btn-outline-custom btn-lg px-4">
-                            Verificar status
-                        </button>
-                    </div>
-                </div>
+        <div class="mascot-display">
+            <img src="/Commandz/img/manutencao_mascote.png" alt="Mascote CommandZ" class="mascot-img">
+        </div>
 
-                <!-- Mascot Visual -->
-                <div class="col-lg-5 d-none d-lg-block">
-                    <div class="mascot-display text-center">
-                        <img src="/Commandz/img/manutencao_mascote.png" alt="Mascote em Manutenção" class="img-fluid" style="filter: drop-shadow(0 0 30px rgba(79,140,255,0.25)); max-width: 480px;">
-                    </div>
-                </div>
+        <h1 class="title-main glitch-text" data-text="OTIMIZANDO_SISTEMA">
+            OTIMIZANDO_SISTEMA
+        </h1>
+
+        <p class="subtitle">
+            // Estamos recalibrando os circuitos principais.<br>
+            // Voltaremos a operar em instantes.
+        </p>
+
+        <div class="progress-wrapper">
+            <div class="progress-bar-container">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-labels">
+                <span>RESOURCES_SYNC</span>
+                <span><span id="load-val">92</span>%</span>
             </div>
         </div>
-    </main>
 
-    <footer class="footer bg-black-tech text-white border-top border-dark py-4 fixed-bottom">
-        <div class="container">
-            <p class="text-gray small mb-0 font-mono" style="color: #3F3F46 !important;">// © 2026 CommandZ. Agradecemos a paciência.</p>
+        <div class="footer-contact">
+            <a href="mailto:contato@comandz.com">contato@comandz.com</a>
         </div>
-    </footer>
+    </div>
 
     <script>
-        // Flicker effect
+        // Particles
+        const container = document.getElementById('particle-container');
+        for (let i = 0; i < 40; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 2 + 1;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.top = Math.random() * 100 + 'vh';
+            p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+            p.style.animationDelay = (Math.random() * 5) + 's';
+            container.appendChild(p);
+        }
+
+        // Percentage
+        let val = 92;
+        const el = document.getElementById('load-val');
         setInterval(() => {
-            if(Math.random() > 0.98) {
-                document.body.style.opacity = '0.9';
-                setTimeout(() => document.body.style.opacity = '1', 50);
+            if (val < 99) {
+                val += Math.random() > 0.85 ? 1 : 0;
+                el.innerText = val;
             }
-        }, 100);
+        }, 5000);
     </script>
 </body>
 
