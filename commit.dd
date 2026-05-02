@@ -1,0 +1,24 @@
+# Histórico de Commits - Projeto CommandZ
+
+feat: deploy inicial para GitHub Pages
+- Configuração do repositório remoto
+- Upload dos arquivos estáticos base
+
+feat: criação da página 404 personalizada
+- Adição do mascote robô (mascote404.png)
+- Implementação da lógica reboot_system() com limpeza de cache
+- Design system Clean Tech aplicado
+
+feat: implementação da página de manutenção premium
+- Criação do arquivo manutencao.html
+- Design em glassmorphism com animação de partículas
+- Inclusão do mascote enfaixado (manutencao_mascote.png)
+
+fix: correção de caminhos de ativos para GitHub Pages
+- Ajuste de caminhos relativos para caminhos absolutos baseados no repositório (/Commandz/img/...)
+- Garantia de carregamento de imagens em subdiretórios
+
+style: refinamento de UX/UI na página de manutenção
+- Remoção de containers desnecessários (cards/quadrados) a pedido do usuário
+- Ajuste de escala do mascote para melhor equilíbrio visual
+- Sincronização visual com a Hero Section da Home Page
