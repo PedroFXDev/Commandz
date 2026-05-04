@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robô Interface - Loop</title>
+    <style>
+        /* Define um fundo qualquer para provar que o robô está sem fundo */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Um gradiente escuro para destacar o robô */
+            background: radial-gradient(circle, #1a1a2e 0%, #050505 100%);
+            overflow: hidden;
+        }
+
+        .container-robo {
+            position: relative;
+            width: 500px; /* Ajuste o tamanho conforme necessário */
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            /* MÁGICA: Remove o fundo preto do vídeo */
+            mix-blend-mode: screen; 
+            
+            /* Suaviza as bordas para parecer mais natural */
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        /* Opcional: Um brilho atrás do robô para dar profundidade */
+        .glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 0, 0, 0.1);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-robo">
+        <div class="glow"></div>
+        
+        <video autoplay loop muted playsinline>
+            <source src="/img/manutencao_transparent.webm" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+    </div>
+
+</body>
+</html>

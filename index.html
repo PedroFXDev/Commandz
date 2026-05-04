@@ -4,247 +4,528 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistemas em Calibração | CommandZ</title>
+    <meta name="description" content="CommandZ — Criação de sites profissionais, landing pages e sistemas web sob medida.">
+    <title>CommandZ | Sites Profissionais que Geram Resultados</title>
 
-    <!-- Google Fonts: Outfit & Fira Code -->
+    <!-- Google Fonts: Inter & Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        body {
-            background-color: #050508;
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(79, 140, 255, 0.03) 0%, transparent 50%),
-                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 100% 100%, 80px 80px, 80px 80px;
-            font-family: 'Outfit', sans-serif;
-            overflow: hidden;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .content-wrapper {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(79, 140, 255, 0.05);
-            border: 1px solid rgba(79, 140, 255, 0.15);
-            padding: 10px 22px;
-            border-radius: 100px;
-            color: var(--color-primary-accent);
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 50px;
-        }
-
-        .status-pulse {
-            width: 8px;
-            height: 8px;
-            background: var(--color-primary-accent);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--color-primary-accent);
-            animation: status-blink 1.5s ease-in-out infinite;
-        }
-
-        @keyframes status-blink {
-            50% { opacity: 0.2; transform: scale(0.8); }
-        }
-
-        .mascot-display {
-            position: relative;
-            margin-bottom: 40px;
-            animation: mascot-float 6s ease-in-out infinite;
-        }
-
-        @keyframes mascot-float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(1deg); }
-        }
-
-        .mascot-img {
-            max-width: 300px;
-            width: 100%;
-            filter: drop-shadow(0 0 40px rgba(79, 140, 255, 0.15));
-        }
-
-        .title-main {
-            font-size: clamp(2rem, 6vw, 4rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .subtitle {
-            color: #71717A;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 50px;
-            line-height: 1.8;
-            font-family: var(--font-mono);
-        }
-
-        .progress-wrapper {
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .progress-bar-container {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 92%;
-            background: var(--color-primary-accent);
-            box-shadow: 0 0 20px var(--color-primary-accent);
-            animation: loading-bar 10s ease-in-out infinite;
-        }
-
-        @keyframes loading-bar {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
-        .progress-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: #3F3F46;
-            letter-spacing: 0.1em;
-        }
-
-        .particles {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--color-primary-accent);
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: particle-move linear infinite;
-        }
-
-        @keyframes particle-move {
-            to { transform: translateY(-100vh); }
-        }
-
-        .footer-contact {
-            position: absolute;
-            bottom: 40px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-        }
-
-        .footer-contact a {
-            color: #52525B;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-contact a:hover {
-            color: #fff;
-        }
-    </style>
 </head>
 
-<body>
-    <div class="particles" id="particle-container"></div>
+<body class="bg-dark-tech">
 
-    <div class="content-wrapper">
-        <div class="status-pill">
-            <span class="status-pulse"></span>
-            SYSTEM_CALIBRATION_ACTIVE
-        </div>
-
-        <div class="mascot-display">
-            <img src="/Commandz/img/manutencao_mascote.png" alt="Mascote CommandZ" class="mascot-img">
-        </div>
-
-        <h1 class="title-main glitch-text" data-text="OTIMIZANDO_SISTEMA">
-            OTIMIZANDO_SISTEMA
-        </h1>
-
-        <p class="subtitle">
-            // Estamos recalibrando os circuitos principais.<br>
-            // Voltaremos a operar em instantes.
-        </p>
-
-        <div class="progress-wrapper">
-            <div class="progress-bar-container">
-                <div class="progress-fill"></div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold font-mono" href="#">&lt;CommandZ/&gt;<span class="text-primary-accent blink">_</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-tech" href="#inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-tech" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-tech" href="#projetos">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-tech" href="#diferenciais">Diferenciais</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-tech" href="#planos">Planos</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-primary-custom" href="#contato">Solicitar orçamento</a>
+                    </li>
+                </ul>
             </div>
-            <div class="progress-labels">
-                <span>RESOURCES_SYNC</span>
-                <span><span id="load-val">92</span>%</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section" id="inicio">
+        <div class="container position-relative z-1 h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-7 scroll-reveal fade-up">
+                    <div class="tech-badge mb-4 font-mono d-inline-block px-3 py-2 border rounded" style="background: rgba(39,39,42,0.5); border-color: rgba(255,255,255,0.05) !important;">
+                        <span style="color: #A1A1AA;">const</span> <span class="text-white">site</span> <span style="color: #A1A1AA;">=</span> <span style="color: #4F8CFF;">new CommandZ()</span>;
+                    </div>
+                    
+                    <h1 class="hero-title fw-bold glitch-text" data-text="Seu site precisa mais do que design. Precisa funcionar." style="font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.15; letter-spacing: -0.5px;">
+                        <span class="text-white">Seu site precisa mais do</span><br>
+                        <span class="text-white">que design. </span><span style="color: #A1A1AA;">Precisa funcionar.</span>
+                    </h1>
+                    
+                    <div class="mt-4 mb-4 font-mono" style="border-left: 2px solid #27272A; padding-left: 1.25rem;">
+                        <span style="color: #71717A; font-size: 0.95rem;">// sites profissionais focados em resultado</span><br>
+                        <span style="color: #71717A; font-size: 0.95rem;">// presença digital que gera credibilidade</span>
+                    </div>
+                    
+                    <div class="d-flex flex-column flex-sm-row gap-3 mt-5">
+                        <a href="#contato" class="btn btn-primary-custom btn-lg px-4 font-mono">
+                            iniciar_projeto()
+                        </a>
+                        <a href="#projetos" class="btn btn-outline-custom btn-lg px-4">
+                            Ver projetos
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block scroll-reveal zoom-in delay-2">
+                    <div class="hero-visual floating-animation position-relative">
+                        <div class="glass-card tech-panel p-0 overflow-hidden" style="border: 1px solid rgba(255,255,255,0.05); background: #12121A; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                            <!-- Header do Editor -->
+                            <div class="glass-header d-flex justify-content-between align-items-center px-3 py-2 m-0" style="background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <div class="dots d-flex gap-2">
+                                    <span class="dot" style="background: #3F3F46; width:10px; height:10px;"></span>
+                                    <span class="dot" style="background: #3F3F46; width:10px; height:10px;"></span>
+                                    <span class="dot" style="background: #3F3F46; width:10px; height:10px;"></span>
+                                </div>
+                                <div class="tech-status font-mono text-gray small" style="font-size: 0.75rem; color: #A1A1AA;">comandz.config.json</div>
+                            </div>
+                            <!-- Corpo do Editor -->
+                            <div class="glass-body p-4 font-mono text-start" style="font-size: 0.85rem; line-height: 1.7;">
+                                <span style="color: #FFFFFF;">{</span><br>
+                                &nbsp;&nbsp;<span style="color: #A1A1AA;">"empresa"</span><span style="color: #FFFFFF;">: </span><span style="color: #4F8CFF;">"CommandZ"</span><span style="color: #FFFFFF;">,</span><br>
+                                &nbsp;&nbsp;<span style="color: #A1A1AA;">"servico"</span><span style="color: #FFFFFF;">: </span><span style="color: #4F8CFF;">"criação de sites"</span><span style="color: #FFFFFF;">,</span><br>
+                                &nbsp;&nbsp;<span style="color: #A1A1AA;">"status"</span><span style="color: #FFFFFF;">: </span><span style="color: #4F8CFF;">"online"</span><span style="color: #FFFFFF;">,</span><br>
+                                &nbsp;&nbsp;<span style="color: #A1A1AA;">"velocidade"</span><span style="color: #FFFFFF;">: </span><span style="color: #4F8CFF;">"0.8s"</span><span style="color: #FFFFFF;">,</span><br>
+                                &nbsp;&nbsp;<span style="color: #A1A1AA;">"responsivo"</span><span style="color: #FFFFFF;">: </span><span style="color: #FFFFFF;">true</span><span style="color: #FFFFFF;">,</span><br>
+                                &nbsp;&nbsp;<span style="color: #A1A1AA;">"seo"</span><span style="color: #FFFFFF;">: </span><span style="color: #FFFFFF;">true</span><span style="color: #FFFFFF;">,</span><br>
+                                &nbsp;&nbsp;<span style="color: #A1A1AA;">"resultado"</span><span style="color: #FFFFFF;">: </span><span style="color: #4F8CFF;">"clientes chegando"</span><br>
+                                <span style="color: #FFFFFF;">}</span><span class="blink">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </header>
 
-        <div class="footer-contact">
-            <a href="mailto:contato@comandz.com">contato@comandz.com</a>
+    <!-- Sobre Section -->
+    <section class="section-padding sobre-section position-relative" id="sobre" style="background-color: var(--color-bg);">
+        <div class="container position-relative z-1">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10 fade-in-up">
+                    <span class="subtitle-tag tech-tag mb-4 d-inline-block">Sobre a CommandZ</span>
+                    
+                    <h2 class="sobre-headline fw-bold mt-2 mb-4" style="color: #FFFFFF; font-size: clamp(2.2rem, 4vw, 3.5rem);">
+                        Sites que representam<br class="d-none d-md-block">
+                        o nível da sua empresa.
+                    </h2>
+                    
+                    <p class="sobre-description lead mx-auto mt-4 max-w-700" style="color: #A1A1AA; line-height: 1.8;">
+                        Somos especialistas em <strong class="text-white">criação de sites profissionais</strong>. Cada projeto é construído sob medida, com código limpo, design moderno e foco total em transmitir credibilidade para quem visita.
+                    </p>
+
+                    <!-- Metrics -->
+                    <div class="d-flex justify-content-center align-items-center gap-4 mt-4 pt-3">
+                        <div class="text-center">
+                            <h3 class="fs-2 fw-bold text-white mb-1">+10</h3>
+                            <span class="font-mono" style="color: #52525B; letter-spacing: 0.1em; font-size: 0.65rem;">SITES_ENTREGUES</span>
+                        </div>
+                        <div style="width: 1px; height: 40px; background: rgba(255,255,255,0.05);"></div>
+                        <div class="text-center">
+                            <h3 class="fs-2 fw-bold text-white mb-1">100%</h3>
+                            <span class="font-mono" style="color: #52525B; letter-spacing: 0.1em; font-size: 0.65rem;">RESPONSIVOS</span>
+                        </div>
+                        <div style="width: 1px; height: 40px; background: rgba(255,255,255,0.05);"></div>
+                        <div class="text-center">
+                            <h3 class="fs-2 fw-bold text-white mb-1">&lt;1s</h3>
+                            <span class="font-mono" style="color: #52525B; letter-spacing: 0.1em; font-size: 0.65rem;">LOADING_TIME</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        // Particles
-        const container = document.getElementById('particle-container');
-        for (let i = 0; i < 40; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            const size = Math.random() * 2 + 1;
-            p.style.width = size + 'px';
-            p.style.height = size + 'px';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.top = Math.random() * 100 + 'vh';
-            p.style.animationDuration = (Math.random() * 15 + 10) + 's';
-            p.style.animationDelay = (Math.random() * 5) + 's';
-            container.appendChild(p);
-        }
+    <!-- Serviços Section -->
+    <section class="section-padding" id="servicos" style="background-color: var(--color-bg); border-top: 1px solid rgba(255,255,255,0.04);">
+        <div class="container">
+            <div class="row mb-5 justify-content-center text-center scroll-reveal fade-up">
+                <div class="col-lg-8">
+                    <span class="subtitle-tag tech-tag">Nossos Serviços</span>
+                    <h2 class="section-title mt-3 fw-bold">O que fazemos de melhor</h2>
+                    <p class="mt-3" style="color: #71717A;">Cada entrega segue um padrão rigoroso de qualidade, performance e design.</p>
+                </div>
+            </div>
+            <div class="row g-4 g-lg-5">
+                <div class="col-md-4 scroll-reveal fade-up delay-1">
+                    <div class="service-card tech-hover">
+                        <div class="icon-wrapper tech-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3 class="fw-bold">Sites Institucionais</h3>
+                        <p class="text-muted">Sites corporativos que passam credibilidade. Design moderno, responsivo e otimizado para aparecer no Google.</p>
+                        <div class="tech-card-border"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 scroll-reveal fade-up delay-2">
+                    <div class="service-card tech-hover">
+                        <div class="icon-wrapper tech-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="fw-bold">Landing Pages</h3>
+                        <p class="text-muted">Páginas focadas em conversão. Estrutura clara, carregamento rápido e design que guia o visitante até a ação.</p>
+                        <div class="tech-card-border"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 scroll-reveal fade-up delay-3">
+                    <div class="service-card tech-hover">
+                        <div class="icon-wrapper tech-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="fw-bold">Manutenção & Suporte</h3>
+                        <p class="text-muted">Atualizações, correções e melhorias contínuas. Seu site sempre no ar, rápido e atualizado.</p>
+                        <div class="tech-card-border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Percentage
-        let val = 92;
-        const el = document.getElementById('load-val');
-        setInterval(() => {
-            if (val < 99) {
-                val += Math.random() > 0.85 ? 1 : 0;
-                el.innerText = val;
-            }
-        }, 5000);
-    </script>
+    <!-- Diferenciais Section -->
+    <section class="section-padding text-white position-relative" id="diferenciais" style="background-color: var(--color-surface); border-top: 1px solid rgba(255,255,255,0.04);">
+        <div class="container position-relative z-1">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0 scroll-reveal fade-right">
+                    <span class="subtitle-tag tech-tag mb-2">Por que a CommandZ</span>
+                    <h2 class="section-title text-white fw-bold">O que nos diferencia</h2>
+                    <p class="text-gray mt-4 mb-4" style="color: #A1A1AA !important;">Cada site é construído com atenção ao detalhe, código limpo e foco em entregar algo que realmente funciona.</p>
+                    <ul class="list-unstyled feature-list tech-list">
+                        <li>
+                            <div class="list-icon-tech">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span><strong>Design Sob Medida:</strong> Nada de templates. Cada projeto é único.</span>
+                        </li>
+                        <li>
+                            <div class="list-icon-tech">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span><strong>Código Limpo:</strong> Sites rápidos, leves e otimizados para SEO.</span>
+                        </li>
+                        <li>
+                            <div class="list-icon-tech">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span><strong>100% Responsivo:</strong> Funciona perfeitamente em qualquer dispositivo.</span>
+                        </li>
+                        <li>
+                            <div class="list-icon-tech">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <span><strong>Suporte Direto:</strong> Comunicação ágil, sem intermediários.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 offset-lg-1 scroll-reveal fade-left delay-1">
+                    <div class="metrics-grid">
+                        <div class="metric-card glass-tech">
+                            <div class="metric-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="var(--color-primary-accent)" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                </svg></div>
+                            <div class="metric-value text-white counter" data-target="99">99%</div>
+                            <div class="metric-label" style="color: #A1A1AA;">Uptime Garantido</div>
+                        </div>
+                        <div class="metric-card glass-tech">
+                            <div class="metric-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="var(--color-primary-accent)" stroke-width="2">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg></div>
+                            <div class="metric-value text-white">+<span class="counter" data-target="150">150</span>%
+                            </div>
+                            <div class="metric-label" style="color: #A1A1AA;">Mais visitas orgânicas</div>
+                        </div>
+                        <div class="metric-card glass-tech">
+                            <div class="metric-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="var(--color-primary-accent)" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg></div>
+                            <div class="metric-value text-white">
+                                < 1s</div>
+                                    <div class="metric-label" style="color: #A1A1AA;">Tempo de Carregamento</div>
+                            </div>
+                            <div class="metric-card glass-tech">
+                                <div class="metric-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="var(--color-primary-accent)" stroke-width="2">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg></div>
+                                <div class="metric-value text-white">24/7</div>
+                                <div class="metric-label" style="color: #A1A1AA;">Monitoramento Ativo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Projetos / Portfólio Section -->
+    <section class="section-padding" id="projetos" style="background-color: var(--color-bg); border-top: 1px solid rgba(255,255,255,0.04);">
+        <div class="container">
+            <div class="row mb-5 align-items-end">
+                <div class="col-lg-6 scroll-reveal fade-right">
+                    <span class="subtitle-tag tech-tag">Nosso Portfólio</span>
+                    <h2 class="section-title mt-3 fw-bold">Projetos <span class="text-white">recentes</span></h2>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-lg-end mt-3 mt-lg-0 scroll-reveal fade-left">
+                    <a href="#contato" class="link-arrow tech-link">Começar o meu projeto <svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg></a>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 scroll-reveal fade-up delay-1">
+                    <div class="project-card tech-project">
+                        <div class="project-image scroll-mockup">
+                            <img src="img/projeto-eong.png" alt="EOON°G - Site de Artista" loading="lazy">
+                            <div class="project-overlay tech-overlay">
+                                <span class="badge-custom badge-tech">Site de Artista</span>
+                            </div>
+                        </div>
+                        <div class="project-info tech-info">
+                            <h3 class="fw-bold">EOON°G</h3>
+                            <p>Site profissional para artista musical. Hero impactante, galeria de músicas e identidade visual forte.</p>
+                            <a href="https://vitinsantos.github.io/ProjetoNg/" target="_blank" class="link-arrow mt-2 d-inline-flex">Ver projeto <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 scroll-reveal fade-up delay-2">
+                    <div class="project-card tech-project">
+                        <div class="project-image scroll-mockup">
+                            <img src="img/projeto-upvidros.png" alt="UP Vidros - Site Institucional" loading="lazy">
+                            <div class="project-overlay tech-overlay">
+                                <span class="badge-custom badge-tech">Site Institucional</span>
+                            </div>
+                        </div>
+                        <div class="project-info tech-info">
+                            <h3 class="fw-bold">UP Vidros</h3>
+                            <p>Site institucional para empresa de envidraçamento de alto padrão. Design premium e responsivo.</p>
+                            <a href="https://up-vidros-df.surge.sh/" target="_blank" class="link-arrow mt-2 d-inline-flex">Ver projeto <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planos Section -->
+    <section class="section-padding position-relative" id="planos" style="background-color: var(--color-surface); border-top: 1px solid rgba(255,255,255,0.04);">
+        <div class="container position-relative z-1">
+            <div class="row mb-5 pb-3 justify-content-center text-center scroll-reveal fade-up">
+                <div class="col-lg-7">
+                    <span class="subtitle-tag tech-tag">Nossos Planos</span>
+                    <h2 class="section-title mt-3 fw-bold">Transparência. Sem surpresas.</h2>
+                    <p class="mt-3" style="color: #71717A;">Escolha o pacote ideal para o estágio atual do seu negócio.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center align-items-center">
+                <!-- Plano Start -->
+                <div class="col-lg-4 col-md-6 scroll-reveal fade-up delay-1">
+                    <div class="pricing-card h-100 position-relative p-4 p-xl-5" style="background: var(--color-surface); border: 1px solid rgba(255,255,255,0.04); border-radius: 16px;">
+                        <span class="font-mono small" style="color: #71717A;">01</span>
+                        <h3 class="fw-bold mb-1 text-white mt-2">Start</h3>
+                        <div class="pricing-price mb-4 mt-3">
+                            <span class="fs-5 align-top" style="color: #71717A;">R$</span>
+                            <span class="display-4 fw-bold text-white">200</span><span style="color: #71717A;">/mês</span>
+                        </div>
+                        <ul class="list-unstyled pricing-features mb-5 text-start" style="color: #A1A1AA;">
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> Landing Page profissional</li>
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 Atualização mensal</li>
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> Hospedagem inclusa</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-outline-custom w-100 py-3">Começar agora</a>
+                    </div>
+                </div>
+
+                <!-- Plano Business -->
+                <div class="col-lg-4 col-md-6 scroll-reveal fade-up delay-2">
+                    <div class="pricing-card h-100 position-relative p-4 p-xl-5" style="background: #14141E; border: 1px solid rgba(79,140,255,0.15); border-radius: 16px;">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <span class="font-mono small px-3 py-1" style="background: var(--color-primary-accent); color: #fff; border-radius: 20px; font-size: 0.7rem;">Recomendado</span>
+                        </div>
+                        <span class="font-mono small" style="color: var(--color-primary-accent);">02</span>
+                        <h3 class="fw-bold text-white mb-1 mt-2">Business</h3>
+                        <div class="pricing-price mb-4 mt-3">
+                            <span class="fs-5 align-top" style="color: #71717A;">R$</span>
+                            <span class="display-4 fw-bold text-white">550</span><span style="color: #71717A;">/mês</span>
+                        </div>
+                        <ul class="list-unstyled pricing-features mb-5 text-start" style="color: #A1A1AA;">
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-accent)" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> Site institucional completo</li>
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-accent)" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> 3 Atualizações mensais</li>
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-accent)" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> SEO premium & performance</li>
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-accent)" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> Painel de gerenciamento</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-primary-custom w-100 py-3">Começar agora</a>
+                    </div>
+                </div>
+
+                <!-- Plano Enterprise -->
+                <div class="col-lg-4 col-md-6 scroll-reveal fade-up delay-3">
+                    <div class="pricing-card h-100 position-relative p-4 p-xl-5" style="background: var(--color-surface); border: 1px solid rgba(255,255,255,0.04); border-radius: 16px;">
+                        <span class="font-mono small" style="color: #71717A;">03</span>
+                        <h3 class="fw-bold mb-1 text-white mt-2">Enterprise</h3>
+                        <div class="pricing-price mb-4 mt-3">
+                            <span class="fs-5 align-top" style="color: #71717A;">R$</span>
+                            <span class="display-4 fw-bold text-white">900</span><span style="color: #71717A;">/mês</span>
+                        </div>
+                        <ul class="list-unstyled pricing-features mb-5 text-start" style="color: #A1A1AA;">
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> Site completo multi-páginas</li>
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> Atualizações ilimitadas</li>
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> SEO avançado & analytics</li>
+                            <li class="mb-3 d-flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717A" stroke-width="2" class="me-3 flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"></polyline></svg> Suporte prioritário 24/7</li>
+                        </ul>
+                        <a href="#contato" class="btn btn-outline-custom w-100 py-3">Começar agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section position-relative overflow-hidden" id="contato" style="background-color: var(--color-surface); border-top: 1px solid rgba(255,255,255,0.05); padding: 100px 0;">
+        <div class="container text-center position-relative z-1 scroll-reveal zoom-in">
+            <span class="subtitle-tag tech-tag mb-4 d-inline-block">Contato</span>
+            <h2 class="display-5 fw-bold text-white mb-4">Vamos criar o seu site?</h2>
+            <p class="lead mb-5 max-w-700 mx-auto" style="color: #A1A1AA;">Conte o que você precisa. Respondemos em até 24 horas com uma proposta clara e sem enrolação.</p>
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                <a href="mailto:contato@comandz.com" class="btn btn-primary-custom btn-lg px-5 font-mono">
+                    solicitar_orcamento()
+                </a>
+                <a href="https://wa.me/5511999999999" class="btn btn-outline-custom btn-lg px-4">
+                    Chamar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-black-tech text-white border-top border-dark">
+        <div class="container">
+            <div class="row pt-5 pb-4 border-bottom border-dark">
+                <div class="col-lg-4 mb-4 mb-lg-0 scroll-reveal fade-right">
+                    <a class="navbar-brand fw-bold text-white fs-4 d-block mb-3 font-mono"
+                        href="#">&lt;CommandZ/&gt;<span class="text-primary-accent blink">_</span></a>
+                    <p class="text-gray pe-lg-4">Criação de sites profissionais, landing pages e sistemas web sob medida para o seu negócio.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0 scroll-reveal fade-up delay-1">
+                    <h5 class="text-white mb-3 fw-bold">Navegação</h5>
+                    <ul class="list-unstyled footer-links tech-footer-links">
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#projetos">Projetos</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0 scroll-reveal fade-up delay-2">
+                    <h5 class="text-white mb-3 fw-bold">Especialidades</h5>
+                    <ul class="list-unstyled footer-links tech-footer-links">
+                        <li><a href="#">Criação de Sites</a></li>
+                        <li><a href="#">Landing Pages</a></li>
+                        <li><a href="#">Manutenção & Suporte</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 scroll-reveal fade-left delay-3">
+                    <h5 class="text-white mb-3 fw-bold">Conectar</h5>
+                    <ul class="list-unstyled text-gray">
+                        <li class="mb-3 d-flex align-items-center gap-2 tech-contact">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <a href="mailto:contato@comandz.com"
+                                class="text-decoration-none text-gray hover-white">contato@comandz.com</a>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center gap-2 tech-contact">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>São Paulo, SP - Brasil</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row pt-4 pb-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-gray small mb-0 font-mono" style="color: #3F3F46 !important;">// © <span id="year"></span> CommandZ. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg></a>
+                        <a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg></a>
+                        <a href="#" class="social-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
